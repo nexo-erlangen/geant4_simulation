@@ -1,0 +1,31 @@
+reset
+
+#####Definitions#####
+dataIN = '/home/hpc/capm/mppi005h/geant4_Rey_Dez_2016/Seventh/Analysis/Judith/RawData_Run_7_3.txt' 
+dataOUT = 'Histo_PMT_Run_7_3' 
+#####Set Commands#####
+set xlabel 'Number of Hits - Binwidth 121'  
+set ylabel 'Number of Events' 
+
+set xrange [0:12151] 
+set ytics nomirror
+set key box top left
+
+binwidth=121
+bin(x,width)=width*floor(x/width)
+####Plot Commands####
+set table 'Data_Histo_PMT_Run_7_3.txt'
+plot dataIN using (bin($4,binwidth)):(1.0) smooth freq w histeps
+unset table
+unset table
+plot dataIN using (bin($4,binwidth)):(1.0) smooth freq w histeps lc 2 title 'Photons on PMT per event' 
+###Output Commands###
+set term pdf font 'Verdana,8' 
+set output dataOUT.'.pdf' 
+replot
+set term png font 'Verdana,8' 
+set output dataOUT.'.png' 
+replot
+set term pop 
+replot
+

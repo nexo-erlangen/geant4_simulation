@@ -1,0 +1,25 @@
+reset
+# SiPM x-Position: 2.05
+set title 'SiPM vs PMT - 2500 events - alpha  4.15, 4.48, 4.8 MeV  in GXe - 0.9 bar - cu 0.9 -al 0.6' 
+#####Definitions#####
+dataIN = '/home/hpc/capm/mppi005h/geant4_Rey_Dez_2016/Seventh/Analysis/Judith/RawData_Run_9_6.txt' 
+dataOUT = 'Scatterplot_Run_9_6' 
+#####Set Commands#####
+set xlabel 'Number of Hits on PMT '  
+set ylabel 'Number of Hits on SiPM' 
+
+set ytics nomirror
+set key box top left
+
+####Plot Commands####
+plot dataIN using 4:3 title 'Reflectivity: 0' 
+###Output Commands###
+set term pdf font 'Verdana,8' 
+set output dataOUT.'.pdf' 
+replot
+set term png font 'Verdana,8' 
+set output dataOUT.'.png' 
+replot
+set term pop 
+replot
+

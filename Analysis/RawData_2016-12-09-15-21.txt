@@ -1,0 +1,29 @@
+# Output: /home/hpc/capm/mppi005h/geant4_Rey_Dez_2016/Seventh/Analysis/RawData_2016-12-09-15-21.txt
+# Particle Type: alpha
+# Alpha Source is used with Pu239 (4.15 MeV), Am241 (4.48 MeV) and Cm244 (4.8 MeV).
+# Cut Value: 0.001 mm 
+# NEST_Factor: 1
+# Scintillation Yield: 1
+# Copper Reflectivity: 0 Aluminum Reflectivity: 0
+# Pressure in Gas (if gas was used): 1
+# Detectormedium: GASEOUS Xenon
+# SiPM x-Position :2.05
+#SiPM_Efficiency = 1 -  PMT_Efficiency = 1
+# Photons || Electrons || SiPM Hits || PMT Hits || particleEnergy 
+
+15638	329	18	256	5.51342
+24874	324	35	414	5.09425
+123752	603	156	2792	5.52921
+16097	343	24	235	5.47431
+125625	650	339	1544	5.6031
+128510	662	164	5493	5.74013
+134052	699	171	7003	5.98841
+123721	645	286	1801	5.52662
+113274	543	131	2798	5.09388
+124225	622	298	1771	5.53554
+# Total number of processed events: 10
+# Largest number of photons on SiPM per event: 339
+# Largest number of photons on PMT per event: 7003
+# Largest number of photons produced per event: 134052
+
+# Thank you for using Simulation - Version 7.3

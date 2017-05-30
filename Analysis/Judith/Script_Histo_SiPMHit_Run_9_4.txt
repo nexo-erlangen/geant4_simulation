@@ -1,0 +1,32 @@
+reset
+
+set title 'Histogram SiPM Hit - 25000 events - alpha 4.15, 4.48, 4.8 MeV  in GXe - 0.9 bar - alRefl: 0.4 cuRefl: 0.9'
+#####Definitions#####
+dataIN = '/home/hpc/capm/mppi005h/geant4_Rey_Dez_2016/Seventh/Analysis/Judith/RawData_Run_9_4.txt' 
+dataOUT = 'Histo_SiPM_Run_9_4' 
+#####Set Commands#####
+set xlabel 'Number of Hits - Binwidth 17'  
+set ylabel 'Number of Events' 
+
+set xrange [0:1069] 
+set ytics nomirror
+set key box top left
+
+binwidth=17
+bin(x,width)=width*floor(x/width)
+####Plot Commands####
+set table 'Data_Histo_SiPM_Run_9_4.txt'
+plot dataIN using (bin($3,binwidth)):(1.0) smooth freq w histeps
+unset table
+unset table
+plot dataIN using (bin($3,binwidth)):(1.0) smooth freq w histeps lc 2 title 'Photons on SiPM per event' 
+###Output Commands###
+set term pdf font 'Verdana,8' 
+set output dataOUT.'.pdf' 
+replot
+set term png font 'Verdana,8' 
+set output dataOUT.'.png' 
+replot
+set term pop 
+replot
+

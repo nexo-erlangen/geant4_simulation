@@ -1,0 +1,8 @@
+/control/verbose 2
+#/control/saveHistory
+/run/verbose 2
+
+# Initialize kernel
+/run/initialize
+
+#/run/beamOn 2500 #it's getting started in Main() itself now (25.05.2016)

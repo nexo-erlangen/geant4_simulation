@@ -1,0 +1,91 @@
+# Macro file for the visualization setting in the initialization phase 
+# of the LXe simulation when running in interactive mode
+#
+
+# Use these open statements to open selected visualization
+#
+# Use this open statement to create an OpenGL view:
+/vis/open OGL 600x600-0+0
+#
+# Disable auto refresh and quieten vis messages whilst scene and
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+#
+# Draw geometry:
+/vis/drawVolume
+#
+# Specify view angle:
+/vis/viewer/set/viewpointVector 0 -1 0.5 
+#/vis/viewer/set/viewpointVector 0.5 0.5 1 
+/vis/viewer/set/lightsVector -1 1 1
+#
+# Specify style (surface, wireframe, auxiliary edges,...)
+/vis/viewer/set/style wireframe
+#/vis/viewer/set/style surface
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+#
+# Draw smooth trajectories at end of event, showing trajectory points
+# as markers 2 pixels wide:
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+# (if too many tracks cause core dump => /tracking/storeTrajectory 0)
+
+# To superimpose all of the events from a given run:
+/vis/scene/endOfEventAction accumulate -1 
+# The number of events kept by the vis manager can be changed with 
+#"/vis/scene/endOfEventAction accumulate <N>", 
+#where N is the maximum number you wish to allow.  N < 0 means "unlimited"
+#
+# Decorations
+# Name
+/vis/set/textColour blue
+/vis/set/textLayout right
+/vis/scene/add/text2D 0.9 -.9 24 ! ! LXe Simulation
+# or, if your system does not support right-adjustment
+#/vis/scene/add/text2D 0 -.9 24 ! ! exampleLXe
+/vis/set/textLayout    # Revert to normal (left adjusted) layout
+/vis/set/textColour    # Revert to default text colour (blue)
+#
+# Axes, scale, etc.
+#/vis/scene/add/scale   # Simple scale line
+/vis/scene/add/axes 0 0 0 10 cm auto false    # at (0,0,0), length 20cm, colour auto, showtext true
+/vis/scene/add/eventID # Drawn at end of event
+/vis/scene/add/date    # Date stamp
+#/vis/scene/add/logo2D  # Simple logo
+#/vis/scene/add/logo    # 3D logo
+#
+# Frame
+/vis/set/colour blue
+/vis/set/lineWidth 2
+/vis/scene/add/frame   # Simple frame around the view
+/vis/set/colour        # Revert to default colour (white)
+/vis/set/lineWidth     # Revert to default line width (1.)
+#
+/vis/set/textColour red 
+#Defines colour and opacity for future "/vis/scene/add/text" commands.
+# Attach text to one edge of Zylinder, with a small, fixed offset
+#/vis/scene/add/text -12 9 -18 cm 18 0 0 Cu-Zylinder
+
+#default colour for /vis/set/add/text commands:
+/vis/set/textColour 
+#
+# To get nice view
+/vis/geometry/set/visibility World 0 false
+/vis/geometry/set/visibility Envelope 0 false
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+#/vis/viewer/set/viewpointThetaPhi 150 -20
+#
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+#
+# For file-based drivers, use this to create an empty detector view:
+#/vis/viewer/flush
+
+#For limitation of displayed particles and tracks
+/vis/ogl/set/displayListLimit 10000 #limit range >=10000, default = 50000

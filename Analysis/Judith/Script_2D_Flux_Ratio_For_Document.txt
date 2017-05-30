@@ -1,0 +1,49 @@
+reset
+#set title 'Mean Photon Flux Ratio (SiPM : PMT) -  GXe 0.9 bar'
+#####Definitions#####
+dataIN = '/home/hpc/capm/mppi005h/geant4_Rey_Dez_2016/Seventh/Analysis/Judith/Analysation/Flux.txt' 
+dataOUT = 'Flux_Ratio_2D_GXe_For_Document' 
+#####Set Commands#####
+set xlabel 'Copper Reflectivity [%]'
+set ylabel offset -1.4,-1.2
+set ylabel 'Aluminum Reflectivity [%]' offset 0.5,0
+set xlabel offset -0,0.5 #rotate by 45
+#set zlabel 'Photon Flux Ratio' 
+
+set ytics offset 0.8,0.0
+set xtics offset -0.2,0.7
+#set ztics 0.74,0.02,0.84 scale 1.5,0.5
+set mxtics 2
+set mytics 2
+#set mztics 2
+#set ztics nomirror
+#set zrange [0.73:0.84]
+
+#set cbtics offset -2.4,-0.9 rotate by 45
+set mcbtics 2
+#set colorbox user size 0.3,0.07 horizontal origin 0.6,0.8 
+#set cbrange [0.735:0.845]
+#set zlabel rotate by 90
+
+set size ratio -1 # this makes it quadratic also in pdf term
+set dgrid3d 11,11
+set pm3d map
+set isosample 40,40
+set size square
+#set grid
+#set palette defined (0.92 '#006400', 0.97 'blue', 1.04 'red')
+set palette rgb 34,35,36 
+
+unset key
+#set key box top right
+####Plot Commands####
+splot 'Flux.txt' u ($1*10):($2*10):3 with pm3d # lc rgb 'black' with lines
+###Output Commands###
+set term pdf font 'Verdana,10' 
+set output dataOUT.'.pdf' 
+replot
+#set term png font 'Verdana,10' 
+#set output dataOUT.'.png' 
+#replot
+set term pop 
+replot

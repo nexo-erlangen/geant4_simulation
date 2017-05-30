@@ -1,0 +1,20 @@
+current icpcversion: none -> load required module intel64/12.1up9
+
+WARNING: The module "intelmpi/4.0.3.008-intel" is deprecated and may be removed in the near future!
+
+
+current gccversion: none -> load required module gcc/4.6.1
+gsl 1.15 - please consider linking with MKL - pkg-config available
+current icpcversion: intel64/12.1up9 -> OK
+current gccversion: gcc/4.8.1 -> WARNING: switch to required module gcc/4.6.1
+gsl 1.15 - please consider linking with MKL - pkg-config available
+Currently Loaded Modulefiles:
+ 1) torque/current                    10) gsl/1.15_rrze_pkgconfig           
+ 2) mpiexec/current                   11) rosi/0.20RC4_intel64bit12.1up9    
+ 3) gnuplot/5.0.2                     12) tkdiff/current                    
+ 4) scite/current                     13) boost/1.54.0-gcc4.8.1-Python2.7.5 
+ 5) java/1.6.0                        14) CLHEP/2.1.0.1-intel64             
+ 6) eclipse/3.7                       15) cmake/3.4.3                       
+ 7) intelmpi/4.0.3.008-intel          16) qt/4.8.6                          
+ 8) mkl/10.3up9                       17) gcc/4.8.1                         
+ 9) intel64/12.1up9                   18) gnuplot/4.6.1                     
